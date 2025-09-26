@@ -22,7 +22,7 @@ struct AuthView: View {
     
     ///Composants de la vue
     var background: some View {
-        Image(viewModel.backgroundImage)
+        Image(decorative: viewModel.backgroundImage)
             .resizable()
     }
     
@@ -48,6 +48,7 @@ struct AuthView: View {
         Rectangle()
             .foregroundColor(.white)
             .frame(width: 100, height: 1)
+            .accessibilityHidden(true)
     }
     
     var textOr: some View {
@@ -68,15 +69,19 @@ struct AuthView: View {
     var socialButton: some View {
         HStack(spacing: 30) {
             ForEach(0..<viewModel.socialLogos.count, id: \.self) { index in
+                let logo = viewModel.socialLogos[index]
+                
                 Button {
                     viewModel.handleSocialLogin(at: index)
                 } label: {
-                    Image(viewModel.socialLogos[index])
+                    Image(logo.imageName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 70)
                         .padding()
                         .cornerRadius(10)
+                        .accessibilityLabel("Bouton de connexion avec \(logo.serviceName)")
+                        .accessibilityAddTraits(.isButton)
                 }
             }
         }
@@ -97,6 +102,7 @@ struct AuthView: View {
                 HStack {
                     Text(viewModel.buttonText)
                         .foregroundStyle(.cyan)
+                        .accessibilityAddTraits(.isButton)
                 }
             }
         }

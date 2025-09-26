@@ -4,6 +4,10 @@ xcuserdata/
 *.xcuserstate
 *.xcscmblueprint
 *.xccheckout
+*.xcresult
+IDEWorkspaceChecks.plist
+WorkspaceSettings.xcsettings
+
 
 # Build products
 build/
@@ -15,9 +19,9 @@ DerivedData/
 # Swift Package Manager
 Packages/
 Package.pins
-Package.resolved
 *.xcodeproj/project.xcworkspace/xcuserdata/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.build/
 
 # Services
 Service.swift

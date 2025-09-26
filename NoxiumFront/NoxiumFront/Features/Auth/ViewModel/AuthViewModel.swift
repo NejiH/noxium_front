@@ -16,7 +16,6 @@ class AuthViewModel {
     var password: String = ""
     var confirmPassword: String = ""
     var numberOfAccountCreated = 0
-    let socialLogos = ["logo-google", "logo-apple"]
     let signInSubscribeButtonText = ["Sign in", "Subscribe"]
     var backgroundImage = "background-connexion"
     var connectionPage: Bool = false
@@ -57,4 +56,14 @@ class AuthViewModel {
             default: break
             }
         }
+    
+    struct SocialLogo {
+        let imageName: String
+        let serviceName: String
+    }
+    
+    var socialLogos: [SocialLogo] = [
+        SocialLogo(imageName: "logo-google", serviceName: "Google"),
+        SocialLogo(imageName: "logo-apple", serviceName: "Apple")
+    ]
 }
