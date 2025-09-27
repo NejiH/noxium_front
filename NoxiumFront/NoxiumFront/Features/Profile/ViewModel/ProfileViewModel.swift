@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 class ProfileViewModel {
@@ -13,6 +14,8 @@ class ProfileViewModel {
     var user: User
     var backgroundImage = "background-profile"
     var userLevel = 0
+    var font = "Musubi"
+    var imageCoin = "coin"
     var experience: Float {
         user.experience
     }
@@ -30,16 +33,16 @@ class ProfileViewModel {
         return 100
     }
     
-    init() {
-        self.user = service.fetchUser()
-    }
-    
     var profilePicture: String {
         return user.profilPicture
     }
     
     var username: String {
         return user.username
+    }
+    
+    init() {
+        self.user = service.fetchUser()
     }
     
     func leveUp() {
@@ -56,5 +59,4 @@ class ProfileViewModel {
             user.experience = 0
         }
     }
-    
 }
