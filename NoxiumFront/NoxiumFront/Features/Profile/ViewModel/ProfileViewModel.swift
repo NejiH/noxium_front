@@ -59,4 +59,28 @@ class ProfileViewModel {
             user.experience = 0
         }
     }
+    
+    struct CustomLinearProgressViewStyle: ProgressViewStyle {
+        var backgroundColor: Color
+        var foregroundColor: Color
+        var cornerRadius: CGFloat
+
+        func makeBody(configuration: Configuration) -> some View {
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    // Fond arrondi
+                    Rectangle()
+                        .fill(backgroundColor)
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
+
+                    // Barre de progression arrondie
+                    Rectangle()
+                        .fill(foregroundColor)
+                        .frame(width: max(0, geometry.size.width * CGFloat(configuration.fractionCompleted ?? 0)))
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
+                }
+            }
+            .frame(height: 12)
+        }
+    }
 }

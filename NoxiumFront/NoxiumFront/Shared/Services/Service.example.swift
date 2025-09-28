@@ -58,7 +58,7 @@ final class UserExampleService {
             vibration: true,
             friends: [
                 Friend(username: "Kim", image: "avatar-kim"),
-                Friend(username: "Ernestin", image: "avatar-ernestin"),
+                Friend(username: "Ernestio", image: "avatar-ernestin"),
                 Friend(username: "Emma", image: "avatar-emma"),
                 Friend(username: "Valentin", image: "avatar-valentin"),
                 Friend(username: "Mounir", image: "avatar-mounir")

@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+//TODO: - les marges des boutons
+// les ronds qui sont ovales photo de profil ✅, trigger warnings et rond des amis > UPDATE DES EXPORTS
+// le scroll horizontal pour les scénarios qui ne prend pas toute la largeur à droite ✅
+// la police des titres ✅
+// le radius et le fond de la barre d'xp > 
+
 struct ProfileView: View {
     
     private let viewModel = ProfileViewModel()
@@ -37,16 +43,17 @@ struct ProfileView: View {
         Text(viewModel.username)
             .font(.custom(viewModel.font, size: 25))
             .fontWeight(.bold)
+            .textCase(.uppercase)
     }
     
     var maskAvatar: some View {
         Image(.avatarLayer)
             .resizable()
-            .frame(width: 140, height: 140)
+            .frame(width: 145, height: 185)
     }
     
     var ingameMoney: some View {
-        HStack (spacing: 10){
+        HStack (spacing: 15){
             Image(viewModel.imageCoin)
                 .resizable()
                 .frame(width: 20, height: 20)
@@ -54,16 +61,15 @@ struct ProfileView: View {
             
             Text("\(viewModel.ingameMoney)")
         }
-        .padding(.horizontal, 5)
-        .padding(.vertical, 5)
+        .frame(width: 107, height: 39)
         .background(.secondary)
         .clipShape(.capsule(style: .circular))
     }
     
     var userLevel: some View {
         Text("lvl \(viewModel.userLevel)")
-            .padding(.horizontal, 10)
-            .padding(.vertical, 5)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
             .background(.secondary)
             .clipShape(.capsule(style: .circular))
     }
@@ -81,13 +87,19 @@ struct ProfileView: View {
         VStack (alignment: .trailing){
 
             ProgressView(value: viewModel.experience, total: viewModel.totalXp)
-            .accentColor(.pink50)
-            .frame(width: 300)
-            .scaleEffect(y:3)
+                .progressViewStyle(ProfileViewModel.CustomLinearProgressViewStyle(
+                    backgroundColor: .gray.opacity(0.2),
+                    foregroundColor: .pink50,
+                    cornerRadius: 100
+                ))
+                .frame(height: 12)
+                .scaleEffect(y:1.5)
+
             
             Text("\(viewModel.experience, format: .number.precision(.fractionLength(0)))/100 xp")
         }
         .padding(.top, 10)
+        .padding(.horizontal, 20)
     }
     
     var addXpButton: some View {
@@ -97,7 +109,6 @@ struct ProfileView: View {
         }
     }
     
-    //TODO: -AJOUTER LE TEXTE PAR DESSUS CHAQUE IMAGE
     var listScenario: some View {
         VStack (alignment: .leading){
             Text("Scenarios")
@@ -117,6 +128,7 @@ struct ProfileView: View {
                                 .padding(.top, 100)
                                 .font(.custom(viewModel.font, size: 25))
                                 .shadow(radius: 5)
+                                .textCase(.uppercase)
                         }
                         .frame(width: 160, height: 160)
                     }
@@ -125,7 +137,7 @@ struct ProfileView: View {
             }
             .scrollIndicators(.never)
         }
-        .padding(.horizontal, 20)
+        .padding(.leading, 20)
     }
     
     var listFriend: some View {
