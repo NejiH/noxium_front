@@ -186,9 +186,11 @@ struct ProfileView: View {
                 username
                 moneyAndLevelStack
                 progressBar
+                LifeBar(current:50.00, max: 100.00)
                 addXpButton
                 listScenario
                 listFriend
+                
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 60)
@@ -198,6 +200,36 @@ struct ProfileView: View {
         .ignoresSafeArea()
     }
 }
+
+struct LifeBar: View {
+    var current: CGFloat // vie actuelle
+    var max: CGFloat     // vie max
+    var body: some View {
+        ZStack(alignment: .leading) {
+            
+            // Fond
+            RoundedRectangle(cornerRadius: 50)
+                .stroke(Color.secondary, lineWidth: 1)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.secondary.opacity(0.3))
+                )
+                .frame(width: 250, height: 30)
+            
+            // Barre de vie
+            RoundedRectangle(cornerRadius: 50)
+                .stroke(Color.accentColor, lineWidth: 2)
+                .background(
+                    RoundedRectangle(cornerRadius: 50)
+                        .fill(current >= 60 ? .green : current >= 40 ? .yellow : current >= 10 ? .orange : .red)
+                )
+                .frame(width: (Double(current > max ? max : current) / Double(max)) * 250, height: 30)
+            
+            
+        }
+    }
+}
+   
 
 #Preview {
     ProfileView()
