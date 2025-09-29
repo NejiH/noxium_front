@@ -11,6 +11,9 @@ import SwiftUI
 @Observable
 class AuthViewModel {
     
+    
+    //TODO: -RESET LES CHAMPS QUAND ON CHANGE DE PAGE
+    
     var username: String = ""
     var email: String = ""
     var password: String = ""

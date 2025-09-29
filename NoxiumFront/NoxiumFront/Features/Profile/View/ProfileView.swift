@@ -11,7 +11,8 @@ import SwiftUI
 // les ronds qui sont ovales photo de profil ✅, trigger warnings et rond des amis > UPDATE DES EXPORTS
 // le scroll horizontal pour les scénarios qui ne prend pas toute la largeur à droite ✅
 // la police des titres ✅
-// le radius et le fond de la barre d'xp > 
+// le radius et le fond de la barre d'xp >
+// Changer les viewModel en viewModel.user 
 
 struct ProfileView: View {
     
@@ -31,7 +32,7 @@ struct ProfileView: View {
     
     
     var avatar: some View {
-        Image(viewModel.profilePicture)
+        Image(viewModel.user.profilPicture)
             .resizable()
             .scaledToFill()
             .frame(width: 140, height: 140)
@@ -40,7 +41,7 @@ struct ProfileView: View {
     }
     
     var username: some View {
-        Text(viewModel.username)
+        Text(viewModel.user.username)
             .font(.custom(viewModel.font, size: 25))
             .fontWeight(.bold)
             .textCase(.uppercase)
@@ -68,8 +69,7 @@ struct ProfileView: View {
     
     var userLevel: some View {
         Text("lvl \(viewModel.userLevel)")
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .frame(width: 82, height: 39)
             .background(.secondary)
             .clipShape(.capsule(style: .circular))
     }
@@ -87,7 +87,7 @@ struct ProfileView: View {
         VStack (alignment: .trailing){
 
             ProgressView(value: viewModel.experience, total: viewModel.totalXp)
-                .progressViewStyle(ProfileViewModel.CustomLinearProgressViewStyle(
+                .progressViewStyle(ProfileViewModel.CustomProgressViewStyle(
                     backgroundColor: .gray.opacity(0.2),
                     foregroundColor: .pink50,
                     cornerRadius: 100
@@ -113,7 +113,8 @@ struct ProfileView: View {
         VStack (alignment: .leading){
             Text("Scenarios")
                 .font(.title2)
-                
+                .fontWeight(Font.Weight.semibold)
+            
             ScrollView (.horizontal) {
                 HStack(spacing: 10) {
                     ForEach (viewModel.scenarios, id: \.id) { scenario in
@@ -121,16 +122,21 @@ struct ProfileView: View {
                         ZStack {
                             Image(scenario.image)
                                 .resizable()
-                                .clipShape(RoundedRectangle(cornerRadius: 20.00, style: .circular))
+                                .scaledToFill()
+                                .clipShape(RoundedRectangle(cornerRadius: 30.00, style: .circular))
                                 .shadow(radius: 5)
                             
-                            Text(scenario.name)
-                                .padding(.top, 100)
-                                .font(.custom(viewModel.font, size: 25))
-                                .shadow(radius: 5)
-                                .textCase(.uppercase)
+                            
+                            VStack {
+                                Spacer()
+                                Text(scenario.name)
+                                    .font(.custom(viewModel.font, size: 25))
+                                    .shadow(radius: 5)
+                                    .textCase(.uppercase)
+                                    .padding(.bottom, 15)
+                            }
                         }
-                        .frame(width: 160, height: 160)
+                        .frame(maxWidth: 156, maxHeight: 173)
                     }
                 }
                 .foregroundStyle(.blue50)
@@ -144,6 +150,7 @@ struct ProfileView: View {
         VStack(alignment: .leading) {
             Text("Amis")
                 .font(.title2)
+                .fontWeight(Font.Weight.semibold)
                 .padding(.top, 20)
             
             ScrollView(.vertical) {
@@ -161,7 +168,7 @@ struct ProfileView: View {
                                 .font(.custom(viewModel.font, size: 20))
                                 .shadow(radius: 5)
                         }
-                        .frame(width: 100, height: 100)
+                        .frame(maxWidth: 100, maxHeight: 100)
                     }
                     .foregroundStyle(.blue50)
                 }

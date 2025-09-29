@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 @Observable
+
+// TODO: -retirer le max de variable pour simplifier le code
+
 class ProfileViewModel {
     let service = UserExampleService.shared
     var user: User
@@ -33,9 +36,9 @@ class ProfileViewModel {
         return 100
     }
     
-    var profilePicture: String {
-        return user.profilPicture
-    }
+//    var profilePicture: String {
+//        return user.profilPicture
+//    }
     
     var username: String {
         return user.username
@@ -60,7 +63,7 @@ class ProfileViewModel {
         }
     }
     
-    struct CustomLinearProgressViewStyle: ProgressViewStyle {
+    struct CustomProgressViewStyle: ProgressViewStyle {
         var backgroundColor: Color
         var foregroundColor: Color
         var cornerRadius: CGFloat
