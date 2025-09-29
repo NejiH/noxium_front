@@ -11,53 +11,38 @@ import SwiftUI
 struct LandingPageView: View {
     var body: some View {
         ZStack{
-            Image(.backgroundProfile)
+            Image(.backgroundShop)
                 .ignoresSafeArea()
-            
-            HStack {
-                MoneyComponentView()
-                Spacer()
-                LevelComponentView()
-                Spacer()
-                
-                Button(action: {
+            VStack{
+                HStack {
+                    MoneyComponentView()
+                    Spacer()
+                    LevelComponentView()
+                    Spacer()
                     
-                }, label: {
-                    if #available(iOS 26.0, *) {
+                    Button(action: {
+                        
+                    }, label: {
                         HStack{
                             Text("Partie privée")
-                            
-                            
                         }
                         .padding()
                         .frame(width: 130)
-                        
-                        .glassEffect(
-                            .clear
-                                .tint(.black.opacity(0.19)) // teinte très subtile pour maximiser la transparence
-                                .interactive(),
-                            in: .rect(cornerRadius: 30)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color.black.opacity(0.25), lineWidth: 1)
-                        )
-                        
-                    } else {
-                        HStack{
-                            Text("Partie privée")
-                            
-                        }
-                        .padding()
-                        .foregroundStyle(.black)
-                        .clipShape(RoundedRectangle(cornerRadius:30))
-                        .frame(width: 130)
-                        .background(.ultraThinMaterial)
-                    }
-                })
+                        .glassCard(cornerRadius: 30, tintOpacity: 0.19, strokeOpacity: 0.25)
+                    })
+                    
+                }
+                .padding(.horizontal)
                 
+                ZStack{
+                    ScenarioCardLandingComponent()
+                        .offset(x: -20)
+                        //.rotationEffect(Angle(degrees: -2))
+                    ScenarioCardLandingComponent().offset(x: 20)
+                    ScenarioCardLandingComponent()
+                        
+                }
             }
-            .padding(.horizontal)
         }
         .foregroundStyle(.white)
     }
@@ -66,4 +51,3 @@ struct LandingPageView: View {
 #Preview {
     LandingPageView()
 }
-
