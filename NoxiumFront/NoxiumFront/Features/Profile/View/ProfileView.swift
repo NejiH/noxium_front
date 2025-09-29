@@ -36,7 +36,7 @@ struct ProfileView: View {
             .resizable()
             .scaledToFill()
             .frame(width: 140, height: 140)
-            .clipShape(Circle())
+//            .clipShape(Circle())
             .mask(maskAvatar)
     }
     
