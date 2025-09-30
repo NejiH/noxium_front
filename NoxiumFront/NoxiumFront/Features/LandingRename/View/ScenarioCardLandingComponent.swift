@@ -33,7 +33,7 @@ struct ScenarioCardLandingComponent: View {
             
             
         }
-        .frame(width: 270)
+        .frame(maxWidth: 270)
         .glassCard(cornerRadius: 30, tintOpacity: 0.19, strokeOpacity: 0.25)
         
     }

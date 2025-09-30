@@ -37,7 +37,7 @@ struct LandingPageView: View {
                 ZStack{
                     ScenarioCardLandingComponent()
                         .offset(x: -20)
-                        //.rotationEffect(Angle(degrees: -2))
+//                        .rotationEffect(Angle(degrees: -10))
                     ScenarioCardLandingComponent().offset(x: 20)
                     ScenarioCardLandingComponent()
                         
