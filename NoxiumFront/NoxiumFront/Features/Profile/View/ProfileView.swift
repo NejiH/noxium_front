@@ -12,11 +12,13 @@ import SwiftUI
 // le scroll horizontal pour les scénarios qui ne prend pas toute la largeur à droite ✅
 // la police des titres ✅
 // le radius et le fond de la barre d'xp >
-// Changer les viewModel en viewModel.user 
+// Changer les viewModel en viewModel.user
 
 struct ProfileView: View {
     
-    private let viewModel = ProfileViewModel()
+    @State private var viewModel = ProfileViewModel()
+    
+    
     
     var body: some View {
         mainView
@@ -29,8 +31,6 @@ struct ProfileView: View {
             .resizable()
     }
     
-    
-    
     var avatar: some View {
         Image(viewModel.user.profilPicture)
             .resizable()
@@ -40,6 +40,12 @@ struct ProfileView: View {
             .mask(maskAvatar)
     }
     
+    var maskAvatar: some View {
+        Image(.avatarLayer)
+            .resizable()
+            .frame(width: 145, height: 185)
+    }
+    
     var username: some View {
         Text(viewModel.user.username)
             .font(.custom(viewModel.font, size: 25))
@@ -47,96 +53,28 @@ struct ProfileView: View {
             .textCase(.uppercase)
     }
     
-    var maskAvatar: some View {
-        Image(.avatarLayer)
-            .resizable()
-            .frame(width: 145, height: 185)
-    }
-    
-    var ingameMoney: some View {
-        HStack (spacing: 15){
-            Image(viewModel.imageCoin)
-                .resizable()
-                .frame(width: 20, height: 20)
-                
-            
-            Text("\(viewModel.ingameMoney)")
-        }
-        .frame(width: 107, height: 39)
-        .background(.secondary)
-        .clipShape(.capsule(style: .circular))
-    }
-    
-    var userLevel: some View {
-        Text("lvl \(viewModel.userLevel)")
-            .frame(width: 82, height: 39)
-            .background(.secondary)
-            .clipShape(.capsule(style: .circular))
-    }
-    
-    var moneyAndLevelStack: some View {
-        HStack (spacing: 20) {
-            ingameMoney
-            userLevel
-        }
-       
-    }
-       
-    var progressBar: some View {
-        
-        VStack (alignment: .trailing){
-
-            ProgressView(value: viewModel.experience, total: viewModel.totalXp)
-                .progressViewStyle(ProfileViewModel.CustomProgressViewStyle(
-                    backgroundColor: .gray.opacity(0.2),
-                    foregroundColor: .pink50,
-                    cornerRadius: 100
-                ))
-                .frame(height: 12)
-                .scaleEffect(y:1.5)
-
-            
-            Text("\(viewModel.experience, format: .number.precision(.fractionLength(0)))/100 xp")
-        }
-        .padding(.top, 10)
-        .padding(.horizontal, 20)
-    }
-    
-    var addXpButton: some View {
-        Button(action: { viewModel.addXp()
-        }) {
-            Text("ADD XP")
+    var profileHeader: some View {
+        VStack {
+            username
+            HStack (spacing: 20) {
+                UserIngameMoney()
+                UserExperience()
+            }
+            CustomProgressView(current:CGFloat(viewModel.user.experience), max: 100.00)
         }
     }
     
     var listScenario: some View {
         VStack (alignment: .leading){
-            Text("Scenarios")
+            Text("Scenarios joués")
                 .font(.title2)
                 .fontWeight(Font.Weight.semibold)
             
             ScrollView (.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach (viewModel.scenarios, id: \.id) { scenario in
+                    ForEach (viewModel.user.scenarios, id: \.id) { scenario in
                         
-                        ZStack {
-                            Image(scenario.image)
-                                .resizable()
-                                .scaledToFill()
-                                .clipShape(RoundedRectangle(cornerRadius: 30.00, style: .circular))
-                                .shadow(radius: 5)
-                            
-                            
-                            VStack {
-                                Spacer()
-                                Text(scenario.name)
-                                    .font(.custom(viewModel.font, size: 25))
-                                    .shadow(radius: 5)
-                                    .textCase(.uppercase)
-                                    .padding(.bottom, 15)
-                            }
-                        }
-                        .frame(maxWidth: 156, maxHeight: 173)
+                        ScenarioCard(image: scenario.image, name: scenario.name)
                     }
                 }
                 .foregroundStyle(.blue50)
@@ -153,44 +91,41 @@ struct ProfileView: View {
                 .fontWeight(Font.Weight.semibold)
                 .padding(.top, 20)
             
-            ScrollView(.vertical) {
-                LazyVGrid(
-                    columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3),
-                    spacing: 0
-                ) {
-                    ForEach(viewModel.friends, id: \.id) { friend in
-                        ZStack {
-                            Image(friend.image)
-                                .resizable()
-                                .shadow(radius: 5)
-                            
-                            Text(friend.username)
-                                .font(.custom(viewModel.font, size: 20))
-                                .shadow(radius: 5)
+            HStack {
+                ScrollView(.vertical) {
+                    LazyVGrid(
+                        columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3),
+                        spacing: 10
+                    ) {
+                        ForEach(viewModel.friendToBubble) { friend in
+                            FriendBubble(image: friend.image, username: friend.username)
                         }
-                        .frame(maxWidth: 100, maxHeight: 100)
+                        
+                        Button {
+                            viewModel.toggleFriends.toggle()
+                        } label: {
+                            viewModel.toggleFriends ?
+                            FriendBubble(image: "background-button", username: "Voir Moins")
+                                .animation(nil, value: UUID())
+                            : FriendBubble(image: "background-button", username: "Voir tout")      .animation(nil, value: UUID())
+                        }
                     }
-                    .foregroundStyle(.blue50)
                 }
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 20)
     }
+    
     
     ///MainView
     var mainView: some View {
         ScrollView(.vertical) {
             VStack {
                 avatar
-                username
-                moneyAndLevelStack
-                progressBar
-                LifeBar(current:50.00, max: 100.00)
-                addXpButton
+                profileHeader
                 listScenario
                 listFriend
-                
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 60)
@@ -201,35 +136,8 @@ struct ProfileView: View {
     }
 }
 
-struct LifeBar: View {
-    var current: CGFloat // vie actuelle
-    var max: CGFloat     // vie max
-    var body: some View {
-        ZStack(alignment: .leading) {
-            
-            // Fond
-            RoundedRectangle(cornerRadius: 50)
-                .stroke(Color.secondary, lineWidth: 1)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.secondary.opacity(0.3))
-                )
-                .frame(width: 250, height: 30)
-            
-            // Barre de vie
-            RoundedRectangle(cornerRadius: 50)
-                .stroke(Color.accentColor, lineWidth: 2)
-                .background(
-                    RoundedRectangle(cornerRadius: 50)
-                        .fill(current >= 60 ? .green : current >= 40 ? .yellow : current >= 10 ? .orange : .red)
-                )
-                .frame(width: (Double(current > max ? max : current) / Double(max)) * 250, height: 30)
-            
-            
-        }
-    }
-}
-   
+
+
 
 #Preview {
     ProfileView()
