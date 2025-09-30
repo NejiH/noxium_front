@@ -68,7 +68,10 @@ struct ShopView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.black.opacity(0.25), lineWidth: 1)
                     )
+
                 }
+                .frame(width: 360, height: 700)
+                .glassCard(cornerRadius: 20, tintOpacity: 0.19, strokeOpacity: 0.25)
             }
         }
     }
