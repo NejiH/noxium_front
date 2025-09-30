@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ShopView: View {
+    @State var viewModel : ShopViewModel
+    
     var body: some View {
         ZStack {
             Image("background-shop")
@@ -21,56 +23,51 @@ struct ShopView: View {
                         .bold()
                         .foregroundStyle(Color(.white))
                     Spacer()
-                }.padding(20)
+                }.padding(.leading, 20)
                 
                 // Version 1 de la frame (si la personne a IOS26
                 if #available(iOS 26.0, *) {
                     VStack {
+                        Spacer(minLength: 20)
+
+                        ShopScrollNews(viewModel: $viewModel)
+                        Spacer(minLength: 20)
                         
-                        HStack{
-                            
-                            Text("Nouveautés")
-                                .font(.default)
-                                .bold()
-                                .foregroundStyle(Color(.white))
-                            
-                            Spacer()
-                        }.padding(20)
-                        
-                        
-                        HStack{
-                            ForEach(ShopItems){ item in
-                                ScrollView{
-                                    ZStack {
-                                        Image(item.image)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .ignoresSafeArea()
-                                    }.frame(width: 155, height: 173)
-                                        .cornerRadius(20)
-                                    
-                                    
-                                    
-                                }
-                            }
-                        }
-                        
-                        
+                        ShopScrollPopular(viewModel: $viewModel)
+                        Spacer(minLength: 20)
+
+                        ShopScrollUnlock(viewModel: $viewModel)
+
                     }
-                    .frame(width: 360, height: 700)
-                    // Applique le verre après les autres modificateurs d’apparence
+                    .frame(width: 360, height: 600)
+                    .padding(.top, 30)
                     .glassEffect(
                         .clear
-                            .tint(.black.opacity(0.19)) // teinte très subtile pour maximiser la transparence
-                            .interactive(),
+                            .tint(.black.opacity(0.19)),
+                        //                           -- .interactive(),-- mettre pour l'effet sur le clic
                         in: .rect(cornerRadius: 20)
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.black.opacity(0.25), lineWidth: 1)
                     )
+                    .clipped()
                 } else {
-                    // Fallback on earlier versions
+                    VStack {
+                        ShopScrollNews(viewModel: $viewModel)
+                        
+                        ShopScrollPopular(viewModel: $viewModel)
+                        
+                        ShopScrollUnlock(viewModel: $viewModel)
+
+                    }
+                    .frame(width: 360, height: 700)
+                    .padding(.top, 30)
+                    .background(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black.opacity(0.25), lineWidth: 1)
+                    )
                 }
             }
         }
@@ -78,5 +75,5 @@ struct ShopView: View {
 }
 
 #Preview {
-    ShopView()
+    ShopView(viewModel: ShopViewModel())
 }
