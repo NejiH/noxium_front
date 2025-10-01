@@ -6,13 +6,14 @@ extension View {
     func glassCard(
         cornerRadius: CGFloat = 30,
         tintOpacity: Double = 0.19,
-        strokeOpacity: Double = 0.25
+        strokeOpacity: Double = 0.25,
+        interactive: Bool = false
     ) -> some View {
         if #available(iOS 26.0, *) {
             self
                 .glassEffect(
-                    .clear
-                        .tint(.black.opacity(tintOpacity)),
+                    interactive ? .clear.tint(.black.opacity(tintOpacity)).interactive()
+                    : .clear.tint(.black.opacity(tintOpacity)),
                     in: .rect(cornerRadius: cornerRadius)
                 )
                 .overlay(

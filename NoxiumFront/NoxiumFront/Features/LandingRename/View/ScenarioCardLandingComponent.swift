@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ScenarioCardLandingComponent: View {
+    var opacity: Double = 0.4
+    
     var body: some View {
         VStack{
             ZStack{
                 Image(.scenarioHalloween)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 270,height:300)
+                    .frame(width: 300,height:300)
                     .clipped()
                     .cornerRadius(30)
                     
@@ -33,8 +35,8 @@ struct ScenarioCardLandingComponent: View {
             
             
         }
-        .frame(maxWidth: 270)
-        .glassCard(cornerRadius: 30, tintOpacity: 0.19, strokeOpacity: 0.25)
+        .frame(maxWidth: 300)
+        .glassCard(cornerRadius: 30, tintOpacity: opacity, strokeOpacity: 0.25)
         
     }
 }
