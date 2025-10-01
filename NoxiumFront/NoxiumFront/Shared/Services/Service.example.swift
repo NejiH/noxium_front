@@ -21,7 +21,7 @@ struct Scenario: Identifiable {
     let image: String
 }
 
-struct User {
+struct User: Identifiable {
     let id: UUID
     let username: String
     let password: String
@@ -62,7 +62,11 @@ final class UserExampleService {
                 Friend(username: "Ernestio", image: "avatar-ernestin"),
                 Friend(username: "Emma", image: "avatar-emma"),
                 Friend(username: "Valentin", image: "avatar-valentin"),
-                Friend(username: "Mounir", image: "avatar-mounir")
+                Friend(username: "Mounir", image: "avatar-mounir"),
+                Friend(username: "Kim", image: "avatar-kim"),
+                Friend(username: "Ernestio", image: "avatar-ernestin"),
+                Friend(username: "Emma", image: "avatar-emma"),
+                Friend(username: "Valentin", image: "avatar-valentin")
             ],
             scenarios: [
                 Scenario(name: "Halloween", description: "Description scenario 1", image: "scenario-skeleton"),
