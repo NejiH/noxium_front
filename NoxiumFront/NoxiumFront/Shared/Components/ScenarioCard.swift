@@ -34,8 +34,8 @@ struct ScenarioCard: View {
         .frame(maxWidth: 156, maxHeight: 173)    }
 }
 
-#Preview {
-    let viewModel = ProfileViewModel()
-
-    ScenarioCard(image: viewModel.user.scenarios[0].picture, name: viewModel.user.scenarios[0].name)
-}
+//#Preview {
+//    let viewModel = ProfileViewModel()
+//
+//    ScenarioCard(image: viewModel.user.scenarios[0].picture, name: viewModel.user.scenarios[0].name)
+//}

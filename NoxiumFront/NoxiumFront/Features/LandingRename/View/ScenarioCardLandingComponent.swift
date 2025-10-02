@@ -42,5 +42,5 @@ struct ScenarioCardLandingComponent: View {
 }
 
 #Preview {
-    ScenarioCardLandingComponent(scenario: .constant(Scenario(name: "Simplon", synopsis: "Zak zak zak", picture: "Simplon", minAge: 3, map: "Montreuil")))
+    ScenarioCardLandingComponent(scenario: .constant(Scenario(id: UUID(), name: "Simplon", synopsis: "Zak zak zak", picture: "Simplon", minAge: 3, map: "Montreuil")))
 }

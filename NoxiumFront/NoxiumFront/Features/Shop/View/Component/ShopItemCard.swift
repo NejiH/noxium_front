@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShopItemCard: View {
     
-    @Binding var shopItem : ShopItem
+    @Binding var shopItem : Scenario
     
     var body: some View {
         NavigationLink {
@@ -17,10 +17,15 @@ struct ShopItemCard: View {
         } label: {
             ZStack {
                 // Image de fond
-                Image(shopItem.image)
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
+                AsyncImage(url: URL(string: shopItem.picture)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 155, height: 173)
+                                    .clipped()
+                            } placeholder: {
+                                ProgressView() // Spinner de chargement
+                            }
                 // Titre de la carte
                 VStack{
                     //Composant argent
@@ -31,7 +36,8 @@ struct ShopItemCard: View {
                                 Image("coin")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                Text("\(shopItem.price)")
+//                                Text("\($shopItem.price)")
+                                Text("100")
                                     .foregroundStyle(.white)
                             }
                             .frame(width: 72, height: 25)
@@ -51,7 +57,8 @@ struct ShopItemCard: View {
                                 Image("coin")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                Text("\(shopItem.price)")
+//                                Text("\(shopItem.price)")
+                                Text("10")
                                     .foregroundStyle(.white)
                             }
                             .frame(width: 72, height: 25)
@@ -70,7 +77,8 @@ struct ShopItemCard: View {
                         .font(.custom("Musubi", size: 22))
                         .foregroundStyle(.blue50)
                     
-                }.padding()
+                }
+                .padding()
             }.frame(width: 155, height: 173)
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.1), radius: 20, x: 10, y: 10)
@@ -79,5 +87,5 @@ struct ShopItemCard: View {
 }
 
 #Preview {
-    ShopItemCard(shopItem: .constant(ShopItem(name: "Blabla", image: "perso2", price: 100, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a commodo ligula. Duis commodo elit purus, et tincidunt tellus luctus nec.")))
+    ShopItemCard(shopItem: .constant(Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "https://i.ibb.co/67h1vjXb/Chat-GPT-Image-2-oct-2025-16-25-31.png", minAge: 0, map: "")))
 }
