@@ -37,9 +37,9 @@ struct MoneyComponentView: View {
                 
             }
             .padding()
-            .clipShape(RoundedRectangle(cornerRadius:30))
             .frame(width: 100)
             .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius:30))
         }
     }
 }

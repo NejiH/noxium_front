@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-       AuthView()
-    }
+        ProductView(shopItem: ShopItem(name: "blabla", image: "Perso3", price: 200, description: "onsenfout"), productViewModel: ProductViewModel())    }
 }
 
 #Preview {
