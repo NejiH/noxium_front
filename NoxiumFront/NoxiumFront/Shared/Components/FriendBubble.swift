@@ -41,6 +41,6 @@ struct FriendBubble: View {
 #Preview {
     let viewModel = ProfileViewModel()
     
-    FriendBubble(image: viewModel.user.friends[0].image, username: viewModel.user.username)
+//    FriendBubble(image: viewModel.user.friends[0].image, username: viewModel.user.username)
     FriendBubble(image: "background-button", username: "voir plus")
 }

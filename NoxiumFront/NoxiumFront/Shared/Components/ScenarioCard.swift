@@ -37,5 +37,5 @@ struct ScenarioCard: View {
 #Preview {
     let viewModel = ProfileViewModel()
 
-    ScenarioCard(image: viewModel.user.scenarios[0].image, name: viewModel.user.scenarios[0].name)
+    ScenarioCard(image: viewModel.user.scenarios[0].picture, name: viewModel.user.scenarios[0].name)
 }
