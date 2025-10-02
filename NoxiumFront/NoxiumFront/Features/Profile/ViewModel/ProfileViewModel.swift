@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 
-@Observable
+//@Observable
 
 // TODO: -retirer le max de variable pour simplifier le code
+
 
 class ProfileViewModel {
     let service = UserExampleService.shared
@@ -44,4 +45,5 @@ class ProfileViewModel {
         toggleFriends ?  user.friends : Array(user.friends.prefix(5))
     }
 }
+
 

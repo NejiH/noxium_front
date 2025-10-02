@@ -99,7 +99,7 @@ struct ShopView: View {
                     )
 
                 }
-                
+
             }
             .frame(width: 360, height: 700)
             .glassCard(cornerRadius: 20, tintOpacity: 0.19, strokeOpacity: 0.25)

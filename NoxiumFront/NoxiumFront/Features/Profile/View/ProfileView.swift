@@ -1,9 +1,18 @@
+////
+////  ProfileView.swift
+////  NoxiumFront
+////
+////  Created by Arnaud Hayon on 19/09/2025.
+////
 //
-//  ProfileView.swift
-//  NoxiumFront
+//import SwiftUI
 //
-//  Created by Arnaud Hayon on 19/09/2025.
-//
+////TODO: - les marges des boutons
+//// les ronds qui sont ovales photo de profil ✅, trigger warnings et rond des amis > UPDATE DES EXPORTS
+//// le scroll horizontal pour les scénarios qui ne prend pas toute la largeur à droite ✅
+//// la police des titres ✅
+//// le radius et le fond de la barre d'xp >
+//// Changer les viewModel en viewModel.user 
 
 import SwiftUI
 
@@ -142,3 +151,4 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
 }
+
