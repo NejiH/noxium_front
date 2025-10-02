@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var authViewModel = LoginViewModel()
     var body: some View {
-
-       LandingPageView()
+        
+        if authViewModel.isAuthenticated {
+            LandingPageView()
+                .environment(authViewModel)
+        } else {
+            LoginView()
+                .environment(authViewModel) 
+        }
     }
-
+    
 }
 
 #Preview {

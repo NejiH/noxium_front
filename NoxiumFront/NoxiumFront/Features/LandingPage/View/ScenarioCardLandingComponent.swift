@@ -9,27 +9,31 @@ import SwiftUI
 
 struct ScenarioCardLandingComponent: View {
     var opacity: Double = 0.4
-    @Binding var scenario: Scenario
+    let scenario: Scenario
     var body: some View {
         VStack{
             ZStack{
-                Image(.scenarioHalloween)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 300,height:300)
-                    .clipped()
-                    .cornerRadius(30)
+                AsyncImage(url: URL(string: scenario.picture)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 300, height: 300)
+                                    .clipped()
+                                    .cornerRadius(30)
+                            } placeholder: {
+                                ProgressView() // Spinner de chargement
+                            }
                     
             }
             VStack{
-                Text("Halloween")
+                Text(scenario.name)
                     .font(.custom("Musubi", size: 30))
                     .fontWeight(.bold)
                     .textCase(.uppercase)
                     .padding(.bottom)
                     .foregroundStyle(.blue50)
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mollis, nibh quis condimentum tincidunt, risus ipsum condimentum felis, sed malesuada nisl nisl tempus sapien. ")
+                Text(scenario.synopsis)
             }
             .padding()
             
@@ -42,5 +46,5 @@ struct ScenarioCardLandingComponent: View {
 }
 
 #Preview {
-    ScenarioCardLandingComponent(scenario: .constant(Scenario(name: "Simplon", synopsis: "Zak zak zak", picture: "Simplon", minAge: 3, map: "Montreuil")))
+    ScenarioCardLandingComponent(scenario: Scenario(id: UUID(),name: "Simplon", synopsis: "Zak zak zak", picture: "Simplon", minAge: 3, map: "Montreuil"))
 }
