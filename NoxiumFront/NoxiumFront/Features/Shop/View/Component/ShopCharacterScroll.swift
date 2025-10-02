@@ -7,7 +7,7 @@ struct ShopCharacterScroll: View {
     var body: some View {
         ShopCharacterScrollContent(selectedCharacter: $selectedCharacter, shopCharacterViewModel: $shopCharacterViewModel)
             .frame(width: 353, height: selectedCharacter.name.isEmpty ? 250 : 380)
-            .applyGlassEffectIfAvailable()
+            .glassCard()
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color.black.opacity(0.25), lineWidth: 1)
@@ -43,19 +43,6 @@ struct ShopCharacterScroll: View {
     
 }
 
-private extension View {
-    @ViewBuilder
-    func applyGlassEffectIfAvailable() -> some View {
-        if #available(iOS 26.0, *) {
-            self.glassEffect(
-                .clear.tint(.black.opacity(0.19)),
-                in: .rect(cornerRadius: 20)
-            )
-        } else {
-            self
-        }
-    }
-}
 
 #Preview {
     ShopCharacterScroll(shopCharacterViewModel: .constant(ProductViewModel()))

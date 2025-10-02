@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShopScrollPopular: View {
-        @Binding var viewModel: ShopViewModel
+        @Binding var viewModel: ScenarioViewModel
 
         var body: some View {
             
@@ -23,7 +23,7 @@ struct ShopScrollPopular: View {
             }.padding(.horizontal, 20)
             ScrollView(.horizontal){
                 HStack{
-                    ForEach($viewModel.ShopItems){ $item in
+                    ForEach($viewModel.scenarios){ $item in
                         //carte des items
                         ShopItemCard(shopItem: $item)
                         
@@ -36,5 +36,5 @@ struct ShopScrollPopular: View {
 }
 
 #Preview {
-    ShopScrollNews(viewModel: .constant(ShopViewModel()))
+    ShopScrollNews(viewModel: .constant(ScenarioViewModel()))
 }

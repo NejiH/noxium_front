@@ -1,5 +1,5 @@
 //
-//  ShopScrollUnlock.swift
+//  ShopScrollNews.swift
 //  NoxiumFront
 //
 //  Created by Lucie Grunenberger  on 29/09/2025.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ShopScrollUnlock: View {
-    @Binding var viewModel: ShopViewModel
+struct ShopScrollNews: View {
     
+    @Binding var viewModel: ScenarioViewModel
+
     var body: some View {
         
         HStack{
             
-            Text("Débloquer")
-            //                .font(.default)
+            Text("Nouveautés")
                 .bold()
                 .foregroundStyle(Color(.white))
             
@@ -23,7 +23,8 @@ struct ShopScrollUnlock: View {
         }.padding(.horizontal, 20)
         ScrollView(.horizontal){
             HStack{
-                ForEach($viewModel.ShopItems){ $item in
+                                
+                ForEach($viewModel.scenarios){ $item in
                     //carte des items
                     ShopItemCard(shopItem: $item)
                     
@@ -32,10 +33,9 @@ struct ShopScrollUnlock: View {
         }.scrollIndicators(.hidden)
         
         
-    }
+            }
 }
 
-
 #Preview {
-    ShopScrollUnlock(viewModel: .constant(ShopViewModel()))
+    ShopScrollNews(viewModel: .constant(ScenarioViewModel()))
 }

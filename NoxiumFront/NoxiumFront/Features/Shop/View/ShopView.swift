@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ShopView: View {
-    @State var viewModel : ShopViewModel
+    @State private var scenarioViewModel = ScenarioViewModel()
+
     
     var body: some View {
         
@@ -29,83 +30,50 @@ struct ShopView: View {
                         MoneyComponentView()
                             .foregroundStyle(Color(.white))
                     }
-                    
-                    // Version 1 de la frame (si la personne a IOS26
-                    if #available(iOS 26.0, *) {
-                        
+                                            
                         VStack {
                             
                             ScrollView{
                                 
+                                ForEach(scenarioViewModel.scenarios){ scenario in
+                                }
                                 Spacer(minLength: 20)
                                 
-                                ShopScrollNews(viewModel: $viewModel)
+                                ShopScrollNews(viewModel: $scenarioViewModel)
                                 Spacer(minLength: 20)
                                 
-                                ShopScrollPopular(viewModel: $viewModel)
+                                ShopScrollPopular(viewModel: $scenarioViewModel)
                                 Spacer(minLength: 20)
                                 
-                                ShopScrollUnlock(viewModel: $viewModel)
+                                ShopScrollUnlock(viewModel: $scenarioViewModel)
                                 
                             }
                             .frame(width: 360, height: 636)
-                            .glassEffect(
-                                .clear
-                                    .tint(.black.opacity(0.19)),
-                                //                           -- .interactive(),-- mettre pour l'effet sur le clic
-                                in: .rect(cornerRadius: 20)
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.black.opacity(0.25), lineWidth: 1)
-                            )
+                            .glassCard()
                             .clipped()
                             
-                        }.scrollIndicators(.hidden)
-                    } else {
+                        }
+                        .scrollIndicators(.hidden)
                         
-                        ScrollView{
-                            VStack {
-                                ShopScrollNews(viewModel: $viewModel)
-                                
-                                ShopScrollPopular(viewModel: $viewModel)
-                                
-                                ShopScrollUnlock(viewModel: $viewModel)
-                                
-                            }
-                            .frame(width: 360, height: 800)
-                            .background(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.black.opacity(0.25), lineWidth: 1)
-                            )
-                        }.scrollIndicators(.hidden)
-                    }
+                    
                     TabBarView()
                     
                     
                 }.padding(20)
-                    .padding(.top, 40)
+                .padding(.top, 40)
                 
                 
             }
             
-                    .frame(width: 360, height: 700)
-                    .padding(.top, 30)
-                    .background(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.black.opacity(0.25), lineWidth: 1)
-                    )
-
+                }.onAppear{
+                    scenarioViewModel.fetchScenarios(token:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmF0aW9uIjoxNzU5OTk1NjQyLjMwOTc5MiwiaWQiOiJFQkU1RDAzQS00RTVBLTRDNzItQkIzMC04RkI5RTQxNTJEM0UifQ.lLCfXZfG7TwshoQPTebZLwNV9u1qFJx5lpgKGz8xX0c")
                 }
 
             }
-//            .frame(width: 360, height: 700)
-//            .glassCard(cornerRadius: 20, tintOpacity: 0.19, strokeOpacity: 0.25)
+           
         }
 
   
 #Preview {
-    ShopView(viewModel: ShopViewModel())
+    ShopView()
 }

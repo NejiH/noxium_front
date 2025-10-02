@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductView: View {
-    @State var shopItem: ShopItem
+    @State var shopItem: Scenario
     @State var productViewModel: ProductViewModel
     
     var body: some View {
@@ -30,7 +30,7 @@ struct ProductView: View {
                         HStack{
                             Image("coin")
                             Spacer()
-                            Text("\(shopItem.price)")
+                            Text("\(shopItem.minAge)")
                                 .fontWeight(.bold)
                             
                         }
@@ -62,5 +62,5 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(shopItem: ShopItem(name: "blabla", image: "Perso3", price: 200, description: "onsenfout"), productViewModel: ProductViewModel())
+    ProductView(shopItem: (Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "perso3", minAge: 0, map: "")), productViewModel: ProductViewModel())
 }
