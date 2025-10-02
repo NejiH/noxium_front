@@ -6,12 +6,12 @@
 //
 
 import Foundation
-struct Scenario: Codable, Identifiable {
-    let id: UUID
+struct Scenario: Codable{
+   // let id: UUID
     let name: String
     let synopsis: String
     let picture: String
     let minAge: Int
     let map: String
-    let price: Int
+   // let price: Int
 }

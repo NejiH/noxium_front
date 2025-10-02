@@ -14,7 +14,7 @@ class ScenarioViewModel{
     var scenarios: [Scenario] = []
     
     func fetchScenarios(token: String){
-        guard let url = URL(string: "http://localhost:8080/scenarios/all") else {
+        guard let url = URL(string: "http://100.91.239.60:8080/scenarios/all") else {
             print("mauvais url")
             return }
         

@@ -9,7 +9,7 @@ import Foundation
 struct User: Codable, Identifiable {
     let id: UUID
     let username: String
-    let birthday: String       
+    let birthday: String
     let profilPicture: String
     let ingameMoney: Int
     let experience: Int
@@ -18,7 +18,11 @@ struct User: Codable, Identifiable {
     let sonorEffect: Bool
     let music: Bool
     let vibration: Bool
- 
+    let scenarios: [Scenario]
+    
+    enum CodingKeys: String, CodingKey {
+            case id, username, birthday, profilPicture, ingameMoney, experience, likes, dislikes, sonorEffect, music, vibration, scenarios
+        }
 }
 
         

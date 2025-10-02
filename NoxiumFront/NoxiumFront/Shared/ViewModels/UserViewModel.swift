@@ -13,7 +13,7 @@ class UserViewModel{
     var users: [User] = []
     
     func fetchUsers(token: String){
-        guard let url = URL(string: "http://localhost:8080/users/All") else {
+        guard let url = URL(string: "http://100.91.239.60:8080/users/All") else {
             print("mauvais url")
             return }
         
@@ -28,7 +28,8 @@ class UserViewModel{
             if let data = data {
                 print("Raw JSON:", String(data: data, encoding: .utf8) ?? "nil")
                 do{
-                    let decodedUsers = try JSONDecoder().decode([User].self, from: data)
+                    let decoder = JSONDecoder()
+                    let decodedUsers = try decoder.decode([User].self, from: data)
                     DispatchQueue.main.async {
                         self.users = decodedUsers
                     }

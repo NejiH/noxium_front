@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScenarioCardLandingComponent: View {
     var opacity: Double = 0.4
-    
+    @Binding var scenario: Scenario
     var body: some View {
         VStack{
             ZStack{
@@ -42,5 +42,5 @@ struct ScenarioCardLandingComponent: View {
 }
 
 #Preview {
-    ScenarioCardLandingComponent()
+    ScenarioCardLandingComponent(scenario: .constant(Scenario(name: "Simplon", synopsis: "Zak zak zak", picture: "Simplon", minAge: 3, map: "Montreuil")))
 }

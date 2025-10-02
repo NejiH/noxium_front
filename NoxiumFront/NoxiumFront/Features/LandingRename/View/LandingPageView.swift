@@ -41,28 +41,39 @@ struct LandingPageView: View {
                     
                     if userViewModel.users.isEmpty {
                         Text("Aucun utilisateur disponible")
+                        
                             .foregroundStyle(.white)
                             .padding(.horizontal)
                     } else {
-                        List(userViewModel.users){ user in
+                        
+                        ForEach(userViewModel.users){ user in
+                            AsyncImage(url: URL(string: user.profilPicture)) { image in
+                                            image
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 300, height: 300)
+                                                .cornerRadius(12)
+                                        } placeholder: {
+                                            ProgressView() // Spinner de chargement
+                                        }
                             Text(user.username)
-                                .foregroundStyle(.black)
                         }
+                        
                     }
                     
                     ZStack{
-                        ScenarioCardLandingComponent()
-                        
-                            .offset(x: -50)
-                            .scaleEffect(0.96)
-                            .blur(radius: 2)
-                            .shadow(color: .black, radius: 10)
-                        ScenarioCardLandingComponent().offset(x: 50)
-                            .scaleEffect(0.96)
-                            .blur(radius: 2)
-                            .shadow(color: .black, radius: 10)
-                        ScenarioCardLandingComponent(opacity: 0.6)
-                            .shadow(color: .black, radius: 10)
+//                        ScenarioCardLandingComponent()
+//                        
+//                            .offset(x: -50)
+//                            .scaleEffect(0.96)
+//                            .blur(radius: 2)
+//                            .shadow(color: .black, radius: 10)
+//                        ScenarioCardLandingComponent().offset(x: 50)
+//                            .scaleEffect(0.96)
+//                            .blur(radius: 2)
+//                            .shadow(color: .black, radius: 10)
+//                        ScenarioCardLandingComponent(opacity: 0.6)
+//                            .shadow(color: .black, radius: 10)
                         
                     }
                     Spacer()
@@ -72,7 +83,7 @@ struct LandingPageView: View {
             .foregroundStyle(.white)
         }
         .onAppear{
-            userViewModel.fetchUsers(token:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjREODQ4NTcwLUEyMkMtNDA3Mi1BRkQxLTZCQzYwOEUwREJCRiIsImV4cGlyYXRpb24iOjE3NTkzMjgyMDYuODk0Nzc4fQ.D5ikyS5J7wQEnA4V9a0OAW4e6BIzaiOBrurxxzM-mKs")
+            userViewModel.fetchUsers(token:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmF0aW9uIjoxNzU5OTk1NjQyLjMwOTc5MiwiaWQiOiJFQkU1RDAzQS00RTVBLTRDNzItQkIzMC04RkI5RTQxNTJEM0UifQ.lLCfXZfG7TwshoQPTebZLwNV9u1qFJx5lpgKGz8xX0c")
         }
     }
 }
