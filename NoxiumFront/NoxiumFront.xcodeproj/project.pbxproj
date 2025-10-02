@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B5BA0B5F2E8F2C79004E2682 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B5BA0B5E2E8F2C79004E2682 /* KeychainAccess */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7D15EC8F2E7AEE8E00123C82 /* NoxiumFront.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoxiumFront.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BA0B5F2E8F2C79004E2682 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = NoxiumFront;
 			packageProductDependencies = (
+				B5BA0B5E2E8F2C79004E2682 /* KeychainAccess */,
 			);
 			productName = NoxiumFront;
 			productReference = 7D15EC8F2E7AEE8E00123C82 /* NoxiumFront.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 7D15EC862E7AEE8E00123C82;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B5BA0B5D2E8F2C79004E2682 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7D15EC902E7AEE8E00123C82 /* Products */;
 			projectDirPath = "";
@@ -349,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B5BA0B5D2E8F2C79004E2682 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B5BA0B5E2E8F2C79004E2682 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5BA0B5D2E8F2C79004E2682 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D15EC872E7AEE8E00123C82 /* Project object */;
 }
