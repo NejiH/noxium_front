@@ -8,8 +8,7 @@
 import Foundation
 
 @Observable
-class ShopItem: Identifiable {
-    
+class ShopCharacter: Identifiable {
     let id = UUID()
     var name: String
     var image: String
