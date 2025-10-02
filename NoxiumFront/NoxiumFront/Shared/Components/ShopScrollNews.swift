@@ -16,7 +16,6 @@ struct ShopScrollNews: View {
         HStack{
             
             Text("Nouveautés")
-//                .font(.default)
                 .bold()
                 .foregroundStyle(Color(.white))
             

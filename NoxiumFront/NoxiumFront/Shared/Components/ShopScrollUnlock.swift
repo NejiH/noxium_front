@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ShopScrollUnlock: View {
     @Binding var viewModel: ShopViewModel
-
+    
     var body: some View {
         
         HStack{
             
             Text("Débloquer")
-//                .font(.default)
+            //                .font(.default)
                 .bold()
                 .foregroundStyle(Color(.white))
             
@@ -32,7 +32,9 @@ struct ShopScrollUnlock: View {
         }.scrollIndicators(.hidden)
         
         
-        }}
+    }
+}
+
 
 #Preview {
     ShopScrollUnlock(viewModel: .constant(ShopViewModel()))

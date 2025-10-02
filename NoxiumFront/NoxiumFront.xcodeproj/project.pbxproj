@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B54C6C412E8A88D90088729F /* Exceptions for "NoxiumFront" folder in "NoxiumFront" target */ = {
+		7DB269252E8698500020B757 /* Exceptions for "NoxiumFront" folder in "NoxiumFront" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		7D15EC912E7AEE8E00123C82 /* NoxiumFront */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B54C6C412E8A88D90088729F /* Exceptions for "NoxiumFront" folder in "NoxiumFront" target */,
+				7DB269252E8698500020B757 /* Exceptions for "NoxiumFront" folder in "NoxiumFront" target */,
 			);
 			path = NoxiumFront;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M23A99K3D7;
+				DEVELOPMENT_TEAM = 56UZ6SLPGP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoxiumFront/Info.plist;
@@ -301,7 +301,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M23A99K3D7;
+				DEVELOPMENT_TEAM = 56UZ6SLPGP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoxiumFront/Info.plist;

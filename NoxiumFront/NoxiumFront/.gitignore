@@ -28,7 +28,7 @@ Service.swift
 
 # CocoaPods
 Pods/
-*.xcworkspace
+*.xcworkspace/xcuserdata/
 
 # Carthage
 Carthage/Build/
