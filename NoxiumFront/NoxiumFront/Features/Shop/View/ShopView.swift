@@ -90,6 +90,19 @@ struct ShopView: View {
                 
             }
             
+                    .frame(width: 360, height: 700)
+                    .padding(.top, 30)
+                    .background(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black.opacity(0.25), lineWidth: 1)
+                    )
+
+                }
+                
+            }
+            .frame(width: 360, height: 700)
+            .glassCard(cornerRadius: 20, tintOpacity: 0.19, strokeOpacity: 0.25)
         }
 
     }
