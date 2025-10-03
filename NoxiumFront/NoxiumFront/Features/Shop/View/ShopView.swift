@@ -27,7 +27,8 @@ struct ShopView: View {
                             .foregroundStyle(Color(.white))
                         Spacer()
                         
-                        MoneyComponentView()
+                        //TODO: -VALEUR A UPDATER
+                        MoneyComponentView(money: 10)
                             .foregroundStyle(Color(.white))
                     }
                                             

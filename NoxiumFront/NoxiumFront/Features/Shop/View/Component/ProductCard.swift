@@ -53,5 +53,5 @@ struct ProductCard: View {
 }
 
 #Preview {
-    ProductCard(shopItem: .constant(Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "https://i.ibb.co/67h1vjXb/Chat-GPT-Image-2-oct-2025-16-25-31.png", minAge: 0, map: "")))
+    ProductCard(shopItem: .constant(Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "https://i.ibb.co/67h1vjXb/Chat-GPT-Image-2-oct-2025-16-25-31.png", minAge: 0, map: "", price: 22, createdAt: "2025-11-27")))
 }

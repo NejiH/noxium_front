@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct LevelComponentView: View {
+    
+    var experience: Int
+    
     var body: some View {
         HStack{
             Text("Niv.")
             Spacer()
-            Text("23")
+            Text("\(experience)")
         }
         .padding()
         .frame(width: 100)
@@ -21,5 +24,5 @@ struct LevelComponentView: View {
 }
 
 #Preview {
-    LevelComponentView()
+    LevelComponentView(experience: 80)
 }

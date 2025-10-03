@@ -15,34 +15,31 @@ import SwiftUI
 //
 class ProfileViewModel {
 //    let service = UserExampleService.shared
-    var user: User
+    @State private var userViewModel = UserViewModel()
+    @State private var currentUserVM = CurrentUserViewModel()
+    
     var backgroundImage = "background-profile"
     var userLevel = 0
     var font = "Musubi"
-    var imageCoin = "coin"
     var toggleFriends: Bool = false
-//
-//    var totalXp: Float {
-//        return 100
-//    }
-//    
-//    var username: String {
-//        return user.username
-//    }
-//    
-    init() {
-        self.user = User(id: UUID(), username: "", birthday: "", profilPicture: "", ingameMoney: 0, experience: 0, likes: 0, dislikes: 0, sonorEffect: false, music: false, vibration: false, scenarios: [])
-    }
-//    
+
+    var totalXp: Int = 100
+
+    
+    
+//    MARK: -EN ATTENTE DE LA ROUTE POST POUR FAIRE DES MODIFS DIRECT SUR LE SERVEUR 
 //    func leveUp() {
-//        if user.experience >= 100 {
-//            userLevel += 1
-//            user.experience = 0
+//        if let user = currentUserVM.user{
+//            if user.experience >= 100 {
+//                userLevel += 1
+//                user.experience = 0
+//            }
 //        }
 //    }
-//    
+
+    //MARK: -A REACTIVER QUAND ON AURA DES AMIS DANS LE USER
 //    var friendToBubble: [Friend] {
-//        toggleFriends ?  user.friends : Array(user.friends.prefix(5))
+//        toggleFriends ?  currentUserVM.user.friends : Array(currentUserVM.user.friends.prefix(5))
 //    }
 }
 //

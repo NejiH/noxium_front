@@ -62,5 +62,5 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(shopItem: (Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "perso3", minAge: 0, map: "")), productViewModel: ProductViewModel())
+    ProductView(shopItem: (Scenario(id: UUID(), name: "Billy", synopsis: "frefe", picture: "perso3", minAge: 0, map: "", price: 22, createdAt: "2025-11-27")), productViewModel: ProductViewModel())
 }

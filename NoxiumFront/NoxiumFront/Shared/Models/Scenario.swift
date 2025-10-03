@@ -13,5 +13,6 @@ struct Scenario: Codable, Identifiable{
     let picture: String
     let minAge: Int
     let map: String
-   // let price: Int
+    let price: Int
+    let createdAt: String
 }

@@ -11,6 +11,7 @@ struct CustomProgressView: View {
     let viewModel = ProfileViewModel()
     var current: CGFloat // vie actuelle
     var max: CGFloat   // vie max
+    var experience: Int
     
     var body: some View {
         
@@ -32,7 +33,7 @@ struct CustomProgressView: View {
             }
             .frame(height: 15)
             
-            Text("\(viewModel.user.experience, format: .number.precision(.fractionLength(0)))/100 xp")
+            Text("\(experience)/100 xp")
 
         }
             .padding(.top, 20)
@@ -42,5 +43,5 @@ struct CustomProgressView: View {
 }
 
 #Preview {
-    CustomProgressView(current: 80.00, max: 100.00)
+    CustomProgressView(current: 80.00, max: 100.00, experience: 82)
 }

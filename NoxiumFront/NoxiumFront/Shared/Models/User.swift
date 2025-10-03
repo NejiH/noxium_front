@@ -12,7 +12,7 @@ struct User: Codable, Identifiable {
     let birthday: String
     let profilPicture: String
     let ingameMoney: Int
-    let experience: Int
+    var experience: Int
     let likes: Int
     let dislikes: Int
     let sonorEffect: Bool

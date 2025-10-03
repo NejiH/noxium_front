@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MoneyComponentView: View {
+    
+    var money: Int
+    
     var body: some View {
         HStack{
             Image("coin")
             Spacer()
-            Text("100")
+            Text("\(money)")
         }
         .padding()
         .frame(width: 100)
@@ -21,5 +24,6 @@ struct MoneyComponentView: View {
 }
 
 #Preview {
-    MoneyComponentView()
+    
+    MoneyComponentView(money: 100)
 }
