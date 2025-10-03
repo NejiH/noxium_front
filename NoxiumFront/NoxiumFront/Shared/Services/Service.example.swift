@@ -38,6 +38,16 @@ struct User: Identifiable {
     let scenarios: [Scenario]
 }
 
+final class ScenarioExampleService {
+    static let shared = ScenarioExampleService()
+    
+    private init() {}
+    
+    func fetchScenario() -> Scenario {
+        return Scenario(name: "Halloween", description: "Scenario d'Halloween", image: "scenarioHalloween")
+    }
+}
+
 final class UserExampleService {
     static let shared = UserExampleService()
     
@@ -69,9 +79,9 @@ final class UserExampleService {
                 Friend(username: "Valentin", image: "avatar-valentin")
             ],
             scenarios: [
-                Scenario(name: "Halloween", description: "Description scenario 1", image: "scenario-skeleton"),
-                Scenario(name: "Simplon", description: "Description scenario 2", image: "scenario-witch"),
-                Scenario(name: "Alice", description: "Description scenario 3", image: "scenario-dead")
+                Scenario(name: "Simplon", description: "Description scenario 2", image: "scenarioSimplon"),
+                Scenario(name: "Halloween", description: "Description scenario 1", image: "scenarioHalloween"),
+                Scenario(name: "Alice", description: "Description scenario 3", image: "scenarioAlice")
             ]
         )
     }

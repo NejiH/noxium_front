@@ -15,8 +15,7 @@ struct UserExperience: View {
     
             Text("lvl \(viewModel.userLevel)")
                 .frame(width: 82, height: 39)
-                .background(.secondary)
-                .clipShape(.capsule(style: .circular))
+                .glassCard(cornerRadius: 30, tintOpacity: 0.19, strokeOpacity: 0.25)
         
     }
 }

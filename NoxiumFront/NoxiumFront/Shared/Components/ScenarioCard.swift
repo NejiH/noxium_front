@@ -17,25 +17,26 @@ struct ScenarioCard: View {
             Image(image)
                 .resizable()
                 .scaledToFill()
+                .frame(width: 156, height: 172)
+                .clipped()
                 .clipShape(RoundedRectangle(cornerRadius: 30.00, style: .circular))
                 .shadow(radius: 5)
             
             
             VStack {
                 Spacer()
-                Text(name)
-                    .font(.custom(viewModel.font, size: 25))
+                CapslockText(text: name, fontSize: 25, padding: 15)
                     .foregroundStyle(.blue50)
                     .shadow(radius: 5)
-                    .textCase(.uppercase)
                     .padding(.bottom, 15)
             }
         }
-        .frame(maxWidth: 156, maxHeight: 173)    }
+        .frame(width: 156, height:173)
+    }
 }
 
 #Preview {
     let viewModel = ProfileViewModel()
-
+    
     ScenarioCard(image: viewModel.user.scenarios[0].image, name: viewModel.user.scenarios[0].name)
 }

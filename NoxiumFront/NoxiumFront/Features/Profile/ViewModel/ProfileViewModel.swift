@@ -25,10 +25,6 @@ class ProfileViewModel {
         return 100
     }
     
-    var username: String {
-        return user.username
-    }
-    
     init() {
         self.user = service.fetchUser()
     }

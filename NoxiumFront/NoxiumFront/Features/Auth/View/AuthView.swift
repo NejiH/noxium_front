@@ -38,7 +38,7 @@ struct AuthView: View {
         .padding()
         .frame(width: 200, height: 70)
         .font(.system(size: 23))
-        .background(Color("pink-50"))
+        .background(Color(.pink50))
         .foregroundColor(.white)
         .clipShape(Capsule())
         .padding(.top, 15)
@@ -55,7 +55,7 @@ struct AuthView: View {
         Text("Or")
             .font(.system(size:28))
             .bold()
-            .foregroundStyle(Color("pink-50"))
+            .foregroundStyle(Color(.pink50))
     }
     
     var orSection: some View {
@@ -95,8 +95,14 @@ struct AuthView: View {
             Button(action: {
                 if viewModel.connectionPage {
                     viewModel.isOnLogginPage()
+                    viewModel.username = ""
+                    viewModel.password = ""
+                    viewModel.email = ""
+                    viewModel.confirmPassword = ""
                 } else {
                     viewModel.isOnSubscribePage()
+                    viewModel.username = ""
+                    viewModel.password = ""
                 }
             }) {
                 HStack {
@@ -194,7 +200,7 @@ struct GenericTextField: View {
             .clipShape(Capsule())
             .overlay(
                 Capsule()
-                    .stroke(Color("pink-50"), lineWidth: 1)
+                    .stroke(Color(.pink50), lineWidth: 1)
             )
             .textInputAutocapitalization(.never)
             .disableAutocorrection(true)

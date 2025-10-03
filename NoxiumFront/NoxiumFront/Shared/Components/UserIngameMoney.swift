@@ -20,8 +20,7 @@ struct UserIngameMoney: View {
             Text("\(viewModel.user.ingameMoney)")
         }
         .frame(width: 107, height: 39)
-        .background(.secondary)
-        .clipShape(.capsule(style: .circular))
+        .glassCard(cornerRadius: 30, tintOpacity: 0.19, strokeOpacity: 0.25)
     }
 }
 

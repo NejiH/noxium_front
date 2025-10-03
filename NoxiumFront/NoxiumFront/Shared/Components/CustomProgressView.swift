@@ -24,13 +24,15 @@ struct CustomProgressView: View {
                         RoundedRectangle(cornerRadius: 50)
                             .fill(Color.gray.opacity(0.2))
                     )
-//
+                   
+                
                 // Barre de vie
                 RoundedRectangle(cornerRadius: 50)
                     .fill(.pink50)
                     .frame(width: (Double(current) > max ? max : current / Double(max)) * 300)
             }
             .frame(height: 15)
+            
             
             Text("\(viewModel.user.experience, format: .number.precision(.fractionLength(0)))/100 xp")
 

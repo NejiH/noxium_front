@@ -36,7 +36,6 @@ struct ProfileView: View {
             .resizable()
             .scaledToFill()
             .frame(width: 140, height: 140)
-//            .clipShape(Circle())
             .mask(maskAvatar)
     }
     
@@ -47,10 +46,7 @@ struct ProfileView: View {
     }
     
     var username: some View {
-        Text(viewModel.user.username)
-            .font(.custom(viewModel.font, size: 25))
-            .fontWeight(.bold)
-            .textCase(.uppercase)
+        CapslockText(text: viewModel.user.username, fontSize: 25, padding: 10)
     }
     
     var profileHeader: some View {
@@ -73,7 +69,6 @@ struct ProfileView: View {
             ScrollView (.horizontal) {
                 HStack(spacing: 10) {
                     ForEach (viewModel.user.scenarios, id: \.id) { scenario in
-                        
                         ScenarioCard(image: scenario.image, name: scenario.name)
                     }
                 }
@@ -82,6 +77,7 @@ struct ProfileView: View {
             .scrollIndicators(.never)
         }
         .padding(.leading, 20)
+        
     }
     
     var listFriend: some View {
@@ -120,19 +116,39 @@ struct ProfileView: View {
     
     ///MainView
     var mainView: some View {
-        ScrollView(.vertical) {
+        ZStack(alignment: .topLeading) {
+            background
+//                .ignoresSafeArea()
+            Image("spider")
+                .resizable()
+                .scaledToFit()
+                .padding(.bottom, 500)
+
             VStack {
-                avatar
-                profileHeader
-                listScenario
-                listFriend
+                CustomNavBar()
+                    .padding(.top, 40)
+                
+                
+                ScrollView(.vertical) {
+                    
+                    VStack {
+                        avatar
+                        profileHeader
+                        listScenario
+                        listFriend
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                }
+                
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 60)
+//            .background(background)
+            .foregroundColor(.white)
+            .ignoresSafeArea()
         }
-        .background(background)
-        .foregroundColor(.white)
         .ignoresSafeArea()
+
+
     }
 }
 
